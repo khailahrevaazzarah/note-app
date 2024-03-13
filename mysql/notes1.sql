@@ -1,0 +1,1 @@
+SELECT * FROM latihan.notes1;

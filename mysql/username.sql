@@ -1,0 +1,17 @@
+USE note;
+
+CREATE TABLE user (
+id INT PRIMARY KEY AUTO_INCREMENT  NOT NULL,
+nama VARCHAR(10) NOT NULL,
+email TEXT,
+password INT (5)
+);
+
+SHOW TABLES;
+
+SELECT * FROM user;
+
+
+
+
+

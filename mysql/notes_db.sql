@@ -1,0 +1,25 @@
+USE latihan;
+
+CREATE DATABASE note;
+
+USE note;
+
+CREATE TABLE notes(
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+title VARCHAR(10) NOT NULL,
+content TEXT NOT NULL,
+penulis INT(2),
+FOREIGN KEY (penulis) REFERENCES user (id)
+);
+SHOW TABLES;
+
+SELECT * FROM notes;
+
+DROP TABLE notes;
+SHOW TABLES;
+
+SELECT * FROM notes;
+
+DROP TABLE user;
+
+
