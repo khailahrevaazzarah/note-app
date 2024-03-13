@@ -154,6 +154,18 @@ const mysql = require('mysql2/promise');
 
 //module.exports = { addNoteHandler, showNoteHandler, updateNoteHandler, deleteNoteHandler, getNoteHandler }
 
+class NoteHandler {
+    constructor(service) {
+        this._service = service
+
+        // ini ditambahkan agar masing-masing method dapat mengakses 'this'
+        this.addNoteHandler = this.addNoteHandler.bind(this)
+        this.getNotesHandler = this.getNotesHandler.bind(this)
+        this.updateNoteHandler = this.updateNoteHandler.bind(this)
+        this.deleteNoteHandler = this.deleteNoteHandler.bind(this)
+    }
+
+
 addNoteHandler = async (request, h) => {
    const { title, content, penulis } = request.payload
 
@@ -226,6 +238,7 @@ deleteNoteHandler = async (request, h) => {
            message: err.message,
        })
    }
+}
 }
 
 module.exports = NoteHandler
