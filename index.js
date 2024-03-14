@@ -3,13 +3,13 @@
 const Hapi = require('@hapi/hapi');
 const notesPlugin = require('./plugins/notes')
 const userPlugin = require('./plugins/user');
-const NoteService = require('./services/inMemory/noteService');
 const { pool } = require('./utils/database/pool');
+const NotesService = require('./services/mysql/noteService');
 
 
 const init = async () => {
 
-    const noteServices = new NoteService(pool)
+    const noteServices = new NotesService(pool)
 
     const server = Hapi.server({
         port: 1234,
