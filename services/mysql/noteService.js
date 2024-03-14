@@ -6,7 +6,7 @@ class NotesService {
   
     async addNote({ title, content, penulis }) {
       const result = await this._pool.execute('INSERT INTO note (title, content, penulis) VALUES (:title, :content, :penulis)', { title, content, penulis })
-      return result.inisertedId 
+      return result.insertId 
     }
   
     async getNotes() {
