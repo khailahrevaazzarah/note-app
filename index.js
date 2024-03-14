@@ -7,7 +7,6 @@ const { pool } = require('./utils/database/pool');
 const NotesService = require('./services/mysql/noteService');
 const mysql = require('mysql2/promise')
 
-
 const init = async () => {
 
     const pool = mysql.createPool({
