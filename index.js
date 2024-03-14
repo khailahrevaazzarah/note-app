@@ -3,7 +3,6 @@
 const Hapi = require('@hapi/hapi');
 const notesPlugin = require('./plugins/notes')
 const userPlugin = require('./plugins/user');
-const { pool } = require('./utils/database/pool');
 const NotesService = require('./services/mysql/noteService');
 const mysql = require('mysql2/promise')
 
