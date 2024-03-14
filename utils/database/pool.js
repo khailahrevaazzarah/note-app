@@ -11,4 +11,6 @@ const pool = mysql.createPool({
     keepAliveInitialDelay: 0,
 });
 
-module.exports = pool
+console.log(pool)
+
+module.export = pool
