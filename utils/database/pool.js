@@ -7,6 +7,8 @@ const pool = mysql.createPool({
     database: 'note',
     waitForConnections: true,
     connectionLimit: 10,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 0,
 });
 
 module.exports = pool

@@ -10,8 +10,9 @@ class NotesService {
     }
   
     async getNotes() {
-      const result = await this._pool.query('SELECT * FROM note')
-      return result.rows
+      const [rows] = await this._pool.query('SELECT * FROM note')
+      console.log(rows)
+      return rows
     }
   
     async getNoteById(id) {
@@ -20,12 +21,12 @@ class NotesService {
     }
   
     async editNoteById(id, { title, content, penulis }) {
-      const result = await this._pool.execute('UPDATE note SET title=:title, content=:content, penulis=:penulis WHERE id=:id', { title, content, penulis, id })
-      return result.affectedRows
+      const [result] = await this._pool.execute('UPDATE note SET title=:title, content=:content, penulis=:penulis WHERE id=:id', { title, content, penulis, id })
+      return [result].affectedRows
     }
   
     async deleteNoteById(id) {
-      const result = await this._pool.execute('DELETE FROM note WHERE id=:id', { id })
+      const [result] = await this._pool.execute('DELETE FROM note WHERE id=:id', { id })
       return result.affectedRows
     }
   }
