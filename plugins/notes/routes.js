@@ -1,5 +1,8 @@
 // const { addNoteHandler, showNoteHandler, updateNoteHandler, deleteNoteHandler, getNoteHandler } = require("./handler");
 
+const Joi = require("joi")
+const { options } = require("joi")
+
 // const routes = [{
 //     method: 'POST',
 //     path: '/notes',
@@ -37,7 +40,14 @@ const routes = (handler) => [
     {
         method: 'POST',
         path: '/notes',
-        handler: handler.addNoteHandler
+        handler: handler.addNoteHandler,
+        options: {
+            validate:{
+                payload: Joi.object({
+                    title: Joi.string()
+                })
+            }
+        }
     },
     {
         method: 'GET',

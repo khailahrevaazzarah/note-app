@@ -173,7 +173,7 @@ addNoteHandler = async (request, h) => {
 
 
    const response = h.response({
-       status: 'success',
+       status: 'sukses',
        message: 'Catatan berhasil dibuat',
        data: {
            noteId
