@@ -157,8 +157,6 @@ const mysql = require('mysql2/promise');
 class NoteHandler {
     constructor(service) {
         this._service = service
-
-        // ini ditambahkan agar masing-masing method dapat mengakses 'this'
         this.addNoteHandler = this.addNoteHandler.bind(this)
         this.getNotesHandler = this.getNotesHandler.bind(this)
         this.updateNoteHandler = this.updateNoteHandler.bind(this)
@@ -185,8 +183,8 @@ addNoteHandler = async (request, h) => {
 }
 
 getNotesHandler = async (request, h) => {
-
-   const notes = this._service.getNotes()
+   const {id} = request.auth.credentials
+   const notes = this._service.getNoteByUserId(id)
 
 
    const response = h.response({

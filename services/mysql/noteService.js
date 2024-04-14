@@ -16,9 +16,10 @@ class NotesService {
       return rows
     }
   
-    async getNoteById(id) {
-      const result = await this._pool.execute('SELECT * FROM notes WHERE id=:id', { id })
-      return result
+    async getNoteByUserId(userId) {
+      const [rows] = await this._pool.query('SELECT * FROM notes WHERE penulis=:userId', { userId })
+      console.log(rows)
+      return rows
     }
   
     async editNoteById(id, { title, content, penulis }) {

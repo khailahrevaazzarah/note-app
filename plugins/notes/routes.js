@@ -42,9 +42,12 @@ const routes = (handler) => [
         path: '/notes',
         handler: handler.addNoteHandler,
         options: {
+            auth: 'notes_jwt',
             validate:{
                 payload: Joi.object({
-                    title: Joi.string()
+                    title: Joi.string().required(),
+                    content: Joi.string().required(),
+                    penulis: Joi.number()
                 })
             }
         }
@@ -52,17 +55,36 @@ const routes = (handler) => [
     {
         method: 'GET',
         path: '/notes',
-        handler: handler.getNotesHandler
+        handler: handler.getNotesHandler,
+        options: {
+            auth: 'notes_jwt',
+        }
     },
     {
         method: 'PUT',
         path: '/notes/{id}',
-        handler: handler.updateNoteHandler
+        handler: handler.updateNoteHandler,
+        options: {
+            auth: 'notes_jwt',
+            validate:{
+                params: Joi.object({
+                    id: Joi.required()
+                })
+            }
+        }
     },
     {
         method: 'DELETE',
         path: '/notes/{id}',
-        handler: handler.deleteNoteHandler
+        handler: handler.deleteNoteHandler,
+        options: {
+            auth: 'notes_jwt',
+            validate:{
+                params: Joi.object({
+                    id: Joi.required()
+                })
+            }
+        }
     },
 ]
 
